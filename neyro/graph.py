@@ -4,7 +4,7 @@ from tensorflow.keras.models import load_model
 import numpy as np
 
 # Загрузка обученной модели
-model = load_model('my_model2.h5')
+model = load_model('my_model.h5')
 
 # Функция predict_digit принимает изображение img и изменяет его размер до 28x28 пикселей для соответствия с моделью
 # Преобразуем изображение в массив NumPy, изменяем его форму и нормализуем значения пикселей, деля их на 255.
@@ -35,8 +35,8 @@ def predict_digit(img):
 def on_paint(event):
     x1, y1 = (event.x - 5), (event.y - 5)
     x2, y2 = (event.x + 5), (event.y + 5)
-    canvas.create_oval(x1, y1, x2, y2, fill='black', width=10)
-    draw.line([x1, y1, x2, y2], fill='black', width=10)
+    canvas.create_oval(x1, y1, x2, y2, fill='black', width=5)
+    draw.line([x1, y1, x2, y2], fill='black', width=5)
 
 # Функция clear_canvas очищает холст и изображение image1, заполняя их белым цветом.
 def clear_canvas():
