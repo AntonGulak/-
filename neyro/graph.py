@@ -4,7 +4,7 @@ from tensorflow.keras.models import load_model
 import numpy as np
 
 # Загрузка обученной модели
-model = load_model('my_model.h5')
+model = load_model('my_model2.h5')
 
 # Функция predict_digit принимает изображение img и изменяет его размер до 28x28 пикселей для соответствия с моделью
 # Преобразуем изображение в массив NumPy, изменяем его форму и нормализуем значения пикселей, деля их на 255.
@@ -13,9 +13,17 @@ model = load_model('my_model.h5')
 def predict_digit(img):
     img = img.resize((28, 28))
     img = img.convert('L')
+
     img = np.array(img)
-    img = img.reshape(1, 28, 28)
-    img = img / 255.0
+    img = np.reshape(img, (1,784))
+    img = img / 255
+
+    where_0 = np.where(img == 0)
+    where_1 = np.where(img == 1)
+
+    img[where_0] = 1
+    img[where_1] = 0
+
 
     # Получаем предсказание модели для изображения, выводим результат на экран и возвращаем индекс
     # максимального значения в массиве предсказаний (это и есть распознанная цифра).

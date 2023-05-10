@@ -34,8 +34,9 @@ model.compile(loss='categorical_crossentropy',
               metrics=['acc'])
 
 #Обучаем модель на обучающих данных, указывая количество эпох (5) и данные для валидации (тестовая выборка).
-model.fit(X_train, y_train, epochs=5,
+model.fit(X_train, y_train, epochs=10,
           validation_data=(X_test,y_test))
+
 
 #Сохраняем обученную модель в файл "my_model.h5" для дальнейшего использования.
 model.save("my_model.h5")
